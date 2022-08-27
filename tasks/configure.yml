@@ -13,9 +13,10 @@
     type: string
     state: present
 - name: Copy .config dotfiles.
-  copy:
+  ansible.builtin.copy:
     src: "{{ playbook_dir }}/dotfiles/{{ item }}"
     dest: "{{ config_home }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
+    mode: 0744
   loop: "{{ config_folder }}"

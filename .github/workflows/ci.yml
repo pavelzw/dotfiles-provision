@@ -1,0 +1,56 @@
+name: Ansible Playbook
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    # at 06:00 UTC on day-of-month 1
+    - cron: "0 6 1 * *"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run ansible-lint
+        uses: ansible-community/ansible-lint-action@v6
+        with:
+          path: "playbook.yml"
+
+  integration:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+          - macos-12
+    env:
+      ANSIBLE_FORCE_COLOR: '1'
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Uninstall GitHub Actions' built-in Homebrew
+        run: tests/uninstall-homebrew.sh
+      - name: Uninstall GitHub Actions' built-in browser installs
+        run: |
+          sudo rm -rf /Applications/Firefox.app
+          sudo rm -rf /Applications/Google\ Chrome.app
+      - name: Install Ansible
+        run: |
+          sudo pip3 install --upgrade pip
+          sudo pip3 install ansible
+      - name: Install Ansible requirements
+        run: ansible-galaxy install -r requirements.yml
+      - name: Test the playbook's syntax
+        run: ansible-playbook --syntax-check playbook.yml
+      - name: Run playbook
+        run: ansible-playbook playbook.yml
+      - name: Idempotence check
+        run: |
+          idempotence=$(mktemp)
+          ansible-playbook playbook.yml | tee -a ${idempotence}
+          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
