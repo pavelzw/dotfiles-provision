@@ -1,0 +1,32 @@
+---
+- hosts: all
+
+  vars_files:
+    - default.config.yml
+  
+  pre_tasks:
+    # - name: Include playbook configuration.
+    #   include_vars: "{{ item }}"
+    #   with_fileglob:
+    #     - "{{ playbook_dir }}/config.yml"
+    #   tags: ['always']
+  
+  roles:
+    - role: elliotweiser.osx-command-line-tools
+    - role: geerlingguy.mac.homebrew
+      tags: ['homebrew']
+    # - role: geerlingguy.mac.dock
+    #   tags: ['dock']
+  
+  tasks: 
+    - import_tasks: tasks/configure.yml
+      tags: ['homebrew']
+    # - import_tasks: tasks/install.yml
+    #   tags: ['programs', 'build']
+
+
+# todos:
+# install latex(?)
+# after micromamba brew cask installation, initialize
+# install saucecodepro, mesolgs nf font
+# dotfile integration

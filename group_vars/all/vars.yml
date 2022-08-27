@@ -1,0 +1,3 @@
+config_home: $XDG_CONFIG_HOME
+ansible_user: pavelzwerschke
+ansible_group: staff
