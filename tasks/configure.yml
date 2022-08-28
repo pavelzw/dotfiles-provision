@@ -1,18 +1,18 @@
-- name: Set iTerm2 custom folder boolean.
+- name: Ensure iTerm2 is configured to load preferences from custom location.
   community.general.osx_defaults:
     domain: com.googlecode.iterm2
     key: LoadPrefsFromCustomFolder
     value: true
     type: boolean
     state: present
-- name: Set iTerm2 preferences location.
+- name: Ensure iTerm2 custom preferences location is set.
   community.general.osx_defaults:
     domain: com.googlecode.iterm2
     key: PrefsCustomFolder
     value: '~/.config/iterm2'
     type: string
     state: present
-- name: Copy .config dotfiles.
+- name: Ensure .config dotfiles are set.
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/dotfiles/{{ item }}"
     dest: "{{ config_home }}"
