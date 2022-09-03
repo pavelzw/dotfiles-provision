@@ -20,7 +20,7 @@
 
   tasks:
     - import_tasks: tasks/configure.yml
-      tags: ['homebrew']
+      tags: ['configure']
     # - import_tasks: tasks/install.yml
     #   tags: ['programs', 'build']
 

@@ -3,6 +3,7 @@ homebrew_installed_packages:
   - tmux
   - git
   - gpg
+  - pinentry-mac
   - node
   - curl
   - act
@@ -40,6 +41,7 @@ homebrew_cask_uninstalled_apps:
   - bitwarden
 
 config_folder:
+  - git
   - iterm2
   - linearmouse
   - tmux

@@ -1,3 +1,4 @@
 config_home: $XDG_CONFIG_HOME
+user_home: $HOME
 ansible_user: "{{ lookup('env','USER') }}"
 ansible_group: staff
