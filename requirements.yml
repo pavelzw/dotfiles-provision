@@ -2,6 +2,7 @@
 roles:
   - name: elliotweiser.osx-command-line-tools
   - name: gantsign.visual-studio-code-extensions
+  - name: gantsign.oh-my-zsh
 
 collections:
   - name: geerlingguy.mac

@@ -1,5 +1,16 @@
+# Oh My Zsh
+oh_my_zsh_plugins:
+  - git
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  - dirhistory
+  - fzf-zsh-plugin
+
+oh_my_zsh_theme: powerlevel10k/powerlevel10k
+
 # See https://github.com/geerlingguy/ansible-collection-mac/tree/master/roles/homebrew
 homebrew_installed_packages:
+  - ansible
   - tmux
   - git
   - gpg
@@ -31,10 +42,12 @@ homebrew_cask_apps:
   - micromamba
   - raycast
   - insomnia
+  - element
   - discord
   - docker
   - mactex-no-gui
   - vlc
+  - shottr
 
 homebrew_cask_uninstalled_apps:
   # The Bitwarden app needs to be installed from the App Store in order for the Safari Extension to work.

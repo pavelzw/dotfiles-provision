@@ -10,12 +10,18 @@
 
   roles:
     - role: elliotweiser.osx-command-line-tools
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: "{{ ansible_user }}"
+      tags: ['oh-my-zsh']
     - role: geerlingguy.mac.homebrew
       tags: ['homebrew']
     # - role: geerlingguy.mac.dock
     #   tags: ['dock']
 
   tasks:
+    - import_tasks: tasks/oh-my-zsh.yml
+      tags: ['oh-my-zsh']
     - import_tasks: tasks/configure.yml
       tags: ['configure']
     # - import_tasks: tasks/install.yml
@@ -25,5 +31,7 @@
 # todos:
 # install latex(?)
 # after micromamba brew cask installation, initialize
+# fix micromamba and conda shell hooks (some files need to be there first)
 # install saucecodepro, mesolgs nf font
 # dotfile integration
+# iterm shell integration

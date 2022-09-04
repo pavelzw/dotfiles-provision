@@ -23,7 +23,7 @@
 - name: Ensure .gnupg dotfiles are set.
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/dotfiles/gnupg/"
-    dest: "{{ user_home }}/.gnupg"
+    dest: "{{ ansible_user_dir }}/.gnupg"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
     mode: 0600
