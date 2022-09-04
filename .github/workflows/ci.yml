@@ -1,4 +1,4 @@
-name: Ansible Playbook
+name: Ansible integration test
 on:
   pull_request:
   push:
@@ -9,16 +9,6 @@ on:
     - cron: "0 6 1 * *"
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run ansible-lint
-        uses: ansible-community/ansible-lint-action@v6
-        with:
-          path: "playbook.yml"
-
   integration:
     runs-on: ${{ matrix.os }}
     strategy:

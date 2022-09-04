@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  name: Dotfiles provision
 
   pre_tasks:
     - name: Include playbook configuration.
@@ -8,22 +9,34 @@
         - "{{ playbook_dir }}/*.config.yml"
       tags: ['always']
 
-  roles:
-    - role: elliotweiser.osx-command-line-tools
-    - role: gantsign.oh-my-zsh
-      users:
-        - username: "{{ ansible_user }}"
-      tags: ['oh-my-zsh']
-    - role: geerlingguy.mac.homebrew
-      tags: ['homebrew']
-    # - role: geerlingguy.mac.dock
-    #   tags: ['dock']
-
   tasks:
-    - import_tasks: tasks/oh-my-zsh.yml
+    - name: Ensure OSX command line tools are installed.
+      ansible.builtin.import_role:
+        name: elliotweiser.osx-command-line-tools
+    - name: Ensure Homebrew is installed and configured.
+      ansible.builtin.import_role:
+        name: geerlingguy.mac.homebrew
+      tags: ['homebrew']
+    - name: Collect package manager fact.
+      # todo: remove this when it gets fixed in geerlingguy.mac.homebrew
+      ansible.builtin.setup:
+        filter:
+          - 'ansible_pkg_mgr'
+      tags: ['homebrew']
+    - name: Ensure Oh My Zsh is installed and configured.
+      ansible.builtin.import_role:
+        name: gantsign.oh-my-zsh
+      vars:
+        users:
+          - username: "{{ ansible_user }}"
       tags: ['oh-my-zsh']
-    - import_tasks: tasks/configure.yml
+    - ansible.builtin.import_tasks: tasks/oh-my-zsh.yml
+      tags: ['oh-my-zsh']
+    - ansible.builtin.import_tasks: tasks/configure.yml
       tags: ['configure']
+    # - ansible.builtin.import_role:
+    #     name: geerlingguy.mac.dock
+    #   tags: ['dock']
     # - import_tasks: tasks/install.yml
     #   tags: ['programs', 'build']
 

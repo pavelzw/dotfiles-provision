@@ -2,18 +2,23 @@
   ansible.builtin.git:
     repo: https://github.com/romkatv/powerlevel10k.git
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/powerlevel10k"
+    version: master
     depth: 1
 - name: Ensure oh-my-zsh plugins are available.
   ansible.builtin.git:
     repo: "{{ item.repo_url }}"
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/{{ item.name }}"
+    # todo: use the tag from the submodule
+    # version: "{{ (git --git-dir={{ playbook_dir }}/dotfiles/oh-my-zsh/custom/plugins/{{ item.name }}/.git rev-parse HEAD) }}"
+    version: "{{ item.version }}"
     depth: 1
   with_items:
-    - { name: fzf-zsh-plugin, repo_url: https://github.com/unixorn/fzf-zsh-plugin.git }
-    - { name: zsh-syntax-highlighting, repo_url: https://github.com/zsh-users/zsh-syntax-highlighting.git }
-    - { name: zsh-autosuggestions, repo_url: https://github.com/zsh-users/zsh-autosuggestions.git }
+    - { name: fzf-zsh-plugin, repo_url: https://github.com/unixorn/fzf-zsh-plugin.git, version: main }
+    - { name: zsh-syntax-highlighting, repo_url: https://github.com/zsh-users/zsh-syntax-highlighting.git, version: master }
+    - { name: zsh-autosuggestions, repo_url: https://github.com/zsh-users/zsh-autosuggestions.git, version: master }
 - name: Ensure custom zsh files are available.
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/dotfiles/oh-my-zsh/custom/{{ item }}.zsh"
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom"
+    mode: 0744
   loop: ['p10k', 'aliases', 'conda', 'functions', 'main']
