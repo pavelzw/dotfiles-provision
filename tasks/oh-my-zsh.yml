@@ -18,7 +18,8 @@
     - { name: zsh-autosuggestions, repo_url: https://github.com/zsh-users/zsh-autosuggestions.git, version: master }
 - name: Ensure custom zsh files are available.
   ansible.builtin.copy:
-    src: "{{ playbook_dir }}/dotfiles/oh-my-zsh/custom/{{ item }}.zsh"
+    src: "{{ item }}"
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom"
     mode: 0744
-  loop: ['p10k', 'aliases', 'conda', 'functions', 'main']
+  with_fileglob:
+    - "{{ playbook_dir }}/dotfiles/oh-my-zsh/custom/*.zsh"
