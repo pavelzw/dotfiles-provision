@@ -19,3 +19,10 @@
     mode: 0744
   with_fileglob:
     - "{{ playbook_dir }}/dotfiles/oh-my-zsh/custom/*.zsh"
+- name: Ensure custom zsh files are available (templated files).
+  ansible.builtin.template:
+    src: "{{ item }}"
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/{{ item | basename | splitext | first }}"
+    mode: 0744
+  with_fileglob:
+    - "{{ playbook_dir }}/dotfiles/oh-my-zsh/custom/*.zsh.j2"
