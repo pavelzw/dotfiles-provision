@@ -36,10 +36,10 @@
     group: "{{ ansible_group }}"
     mode: 0600
 - name: Ensures .mamba/auth dir exists
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.mamba/auth"
     state: directory
-    recurse: yes
+    recurse: true
 - name: Ensure mamba authentication.json is set.
   ansible.builtin.template:
     src: "{{ playbook_dir }}/dotfiles/conda/authentication.json.j2"
