@@ -27,3 +27,23 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
     mode: 0600
+- name: Ensure .condarc is set.
+  ansible.builtin.template:
+    src: "{{ playbook_dir }}/dotfiles/conda/condarc.j2"
+    dest: "{{ ansible_user_dir }}/.condarc"
+    # todo move to $XDG_CONFIG_HOME/conda/condarc as soon as https://github.com/mamba-org/mamba/issues/1916 is done
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_group }}"
+    mode: 0600
+- name: Ensures .mamba/auth dir exists
+  file:
+    path: "{{ ansible_user_dir }}/.mamba/auth"
+    state: directory
+    recurse: yes
+- name: Ensure mamba authentication.json is set.
+  ansible.builtin.template:
+    src: "{{ playbook_dir }}/dotfiles/conda/authentication.json.j2"
+    dest: "{{ ansible_user_dir }}/.mamba/auth/authentication.json"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_group }}"
+    mode: 0600
