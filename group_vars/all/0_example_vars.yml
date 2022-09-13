@@ -1,0 +1,10 @@
+conda:
+  qc_internal_channel: https://custom.conda.channel
+
+mamba:
+  authentication:
+    qc:
+      url: https://url.to.conda.host
+      user: user
+      password: password
+      type: BasicHTTPAuthentication
