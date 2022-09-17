@@ -1,5 +1,6 @@
 conda:
-  qc_internal_channel: https://custom.conda.channel
+  qc: 
+    channel_alias: https://custom.conda.quetz/get
 
 mamba:
   authentication:
