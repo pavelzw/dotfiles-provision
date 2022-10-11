@@ -8,6 +8,66 @@ oh_my_zsh_plugins:
 
 oh_my_zsh_theme: powerlevel10k/powerlevel10k
 
+dockitems_remove:
+  # Some of the apps have a different German name, thus we need to specify the
+  # full path for them to be able to work everywhere.
+  - /System/Applications/Messages.app
+  - /System/Applications/Maps.app
+  - /System/Applications/Photos.app
+  - FaceTime
+  - /System/Applications/Contacts.app
+  - /System/Applications/Notes.app
+  - TV
+  - /System/Applications/Music.app
+  - Podcasts
+  - Keynote
+  - Numbers
+  - Pages
+  - 'App Store'
+  - '/System/Applications/System Preferences.app'
+
+dockitems_persist:
+  - name: Launchpad
+    path: /System/Applications/Launchpad.app
+    pos: 1
+  - name: Google Chrome
+    path: '/Applications/Google Chrome.app'
+    pos: 2
+  - name: Mail
+    path: /System/Applications/Mail.app
+    pos: 3
+  - name: "{{ 'Kalender' if ansible_env.LANG == 'de_DE.UTF-8' else 'Calendar' }}"
+    path: /System/Applications/Calendar.app
+    pos: 4
+  - name: "{{ 'Erinnerungen' if ansible_env.LANG == 'de_DE.UTF-8' else 'Reminders' }}"
+    path: /System/Applications/Reminders.app
+    pos: 5
+  - name: iTerm
+    path: /Applications/iTerm.app
+    pos: 6
+  - name: Visual Studio Code
+    path: '/Applications/Visual Studio Code.app'
+    pos: 7
+  - name: Spotify
+    path: /Applications/Spotify.app
+    pos: 8
+  - name: Telegram
+    path: /Applications/Telegram.app
+    pos: 9
+  - name: Discord
+    path: /Applications/Discord.app
+    pos: 10
+  - name: Slack
+    path: /Applications/Slack.app
+    pos: 11
+  - name: Dash
+    path: /Applications/Dash.app
+    pos: 12
+  - name: Bitwarden
+    path: /Applications/Bitwarden.app
+    pos: 13
+
+
 # See https://github.com/geerlingguy/ansible-collection-mac/tree/master/roles/homebrew
 homebrew_installed_packages:
   - act
@@ -15,9 +75,11 @@ homebrew_installed_packages:
   - asciiquarium
   - bat
   - curl
+  - exa
   - fzf
   - git
   - gpg
+  - htop
   - neofetch
   - node
   - openjdk
@@ -39,6 +101,7 @@ homebrew_cask_apps:
   - discord
   - docker
   - element
+  - google-chrome
   - homebrew/cask-fonts/font-meslo-lg-nerd-font
   - handbrake
   - hiddenbar

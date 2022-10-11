@@ -28,6 +28,10 @@
       tags: ['oh-my-zsh']
     - ansible.builtin.import_tasks: tasks/configure.yml
       tags: ['configure']
+    - name: Ensure Dock is configured.
+      tags: ['dock', 'configure']
+      ansible.builtin.import_role:
+        name: geerlingguy.mac.dock
     # - ansible.builtin.import_role:
     #     name: geerlingguy.mac.dock
     #   tags: ['dock']
