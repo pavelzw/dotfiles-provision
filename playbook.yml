@@ -32,9 +32,6 @@
       tags: ['dock', 'configure']
       ansible.builtin.import_role:
         name: geerlingguy.mac.dock
-    # - ansible.builtin.import_role:
-    #     name: geerlingguy.mac.dock
-    #   tags: ['dock']
     # - import_tasks: tasks/install.yml
     #   tags: ['programs', 'build']
 
@@ -51,6 +48,8 @@
 # maybe ausweisapp2?
 # Parallels Desktop
 # Refined GitHub
+# obs
+# eos driver
 
 
 # from App Store:

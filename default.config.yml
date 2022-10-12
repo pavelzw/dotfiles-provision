@@ -89,6 +89,7 @@ homebrew_installed_packages:
   - rsync
   - tldr
   - tmux
+  - yt-dlp
 
 homebrew_taps:
   - homebrew/core
@@ -96,6 +97,8 @@ homebrew_taps:
 
 homebrew_cask_apps:
   - anki
+  # todo v1.1 is available on homebrew
+  # - homebrew/homebrew-cask-drivers/canon-eos-webcam-utility
   - dash
   - devtoys
   - discord
@@ -112,14 +115,17 @@ homebrew_cask_apps:
   - mactex-no-gui
   # - mambaforge
   - micromamba
-  - microsoft-office
-  # - nextcloud
-  - nordvpn
+  # - microsoft-office
+  - nextcloud
+  # - nordvpn
+  - homebrew/cask-versions/parallels17
   - raycast
+  - rectangle
   - shottr
   - slack
   - slidepilot
   - spotify
+  - steam
   - telegram
   - threema
   - visual-studio-code
@@ -128,13 +134,15 @@ homebrew_cask_apps:
   - zoom
   # JetBrains Products
   - jetbrains-toolbox
-  - pycharm
-  - clion
-  - intellij-idea
+  # - pycharm
+  # - clion
+  # - intellij-idea
 
 homebrew_cask_uninstalled_apps:
   # The Bitwarden app needs to be installed from the App Store in order for the Safari Extension to work.
   - bitwarden
+  - microsoft-office
+  - nordvpn
 
 config_folder:
   - git
