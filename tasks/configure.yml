@@ -14,7 +14,7 @@
     state: present
 - name: Ensure .config dotfiles are set.
   ansible.builtin.copy:
-    src: "{{ playbook_dir }}/dotfiles/{{ item }}"
+    src: "{{ dotfiles_dir }}/{{ item }}"
     dest: "{{ config_home }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
@@ -22,14 +22,14 @@
   loop: "{{ config_folder }}"
 - name: Ensure .gnupg dotfiles are set.
   ansible.builtin.copy:
-    src: "{{ playbook_dir }}/dotfiles/gnupg/"
+    src: "{{ dotfiles_dir }}/gnupg/"
     dest: "{{ ansible_user_dir }}/.gnupg"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
     mode: 0600
 - name: Ensure .condarc is set.
   ansible.builtin.template:
-    src: "{{ playbook_dir }}/dotfiles/conda/condarc.j2"
+    src: "{{ dotfiles_dir }}/conda/condarc.j2"
     dest: "{{ ansible_user_dir }}/.condarc"
     # todo move to $XDG_CONFIG_HOME/conda/condarc as soon as https://github.com/mamba-org/mamba/issues/1916 is done
     owner: "{{ ansible_user }}"
@@ -42,8 +42,18 @@
     recurse: true
 - name: Ensure mamba authentication.json is set.
   ansible.builtin.template:
-    src: "{{ playbook_dir }}/dotfiles/conda/authentication.json.j2"
+    src: "{{ dotfiles_dir }}/conda/authentication.json.j2"
     dest: "{{ ansible_user_dir }}/.mamba/auth/authentication.json"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
     mode: 0600
+- name: Ensure US with German umlauts keyboard layout is present.
+  become: true
+  ansible.builtin.copy:
+    src: "{{ dotfiles_dir }}/keyboard-layouts/us-with-german-umlauts/US-with-German-Umlauts.bundle"
+    dest: "/Library/Keyboard Layouts/"
+    owner: root
+    group: wheel
+    mode: 0755
+  # you still need to activate this keyboard under System Preferences 
+  # -> Keyboard -> Input Sources in the English category
