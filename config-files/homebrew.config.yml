@@ -2,6 +2,7 @@
 homebrew_installed_packages:
   - act
   - ansible
+  - ansible-lint
   - asciiquarium
   - bat
   - curl
@@ -27,8 +28,7 @@ homebrew_taps:
 
 homebrew_cask_apps:
   - anki
-  # todo v1.1 is available on homebrew
-  # - homebrew/homebrew-cask-drivers/canon-eos-webcam-utility
+  - homebrew/homebrew-cask-drivers/canon-eos-webcam-utility
   - dash
   - devtoys
   - discord
@@ -49,6 +49,8 @@ homebrew_cask_apps:
   - nextcloud
   # - nordvpn
   - homebrew/cask-versions/parallels17
+  - plex
+  - portfolioperformance
   - raycast
   - rectangle
   - shottr
