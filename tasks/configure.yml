@@ -55,5 +55,5 @@
     owner: root
     group: wheel
     mode: 0755
-  # you still need to activate this keyboard under System Preferences 
+  # you still need to activate this keyboard under System Preferences
   # -> Keyboard -> Input Sources in the English category

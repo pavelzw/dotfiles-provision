@@ -1,0 +1,8 @@
+oh_my_zsh_plugins:
+  - git
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  - dirhistory
+  - fzf-zsh-plugin
+
+oh_my_zsh_theme: powerlevel10k/powerlevel10k
