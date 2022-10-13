@@ -43,12 +43,13 @@ homebrew_cask_apps:
   - linearmouse
   # - homebrew/homebrew-cask-drivers/logi-options-plus # you need to execute the installer manually...
   - mactex-no-gui
-  # - mambaforge
+  - mambaforge
   - micromamba
   # - microsoft-office
   - nextcloud
   # - nordvpn
-  - homebrew/cask-versions/parallels17
+  # this breaks some permissions needed for homebrew, but only in the macos-11 runner
+  # - homebrew/cask-versions/parallels17
   - plex
   - portfolioperformance
   - raycast
