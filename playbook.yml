@@ -24,9 +24,11 @@
         users:
           - username: "{{ ansible_user }}"
       tags: ['oh-my-zsh']
-    - ansible.builtin.import_tasks: tasks/oh-my-zsh.yml
+    - name: Perform oh-my-zsh tasks.
+      ansible.builtin.import_tasks: tasks/oh-my-zsh.yml
       tags: ['oh-my-zsh']
-    - ansible.builtin.import_tasks: tasks/configure.yml
+    - name: Perform configuration tasks.
+      ansible.builtin.import_tasks: tasks/configure.yml
       tags: ['configure']
     - name: Ensure Dock is configured.
       tags: ['dock', 'configure']
