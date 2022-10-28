@@ -35,7 +35,7 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
     mode: 0600
-- name: Ensures .mamba/auth dir exists
+- name: Ensures .mamba/auth dir exists.
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.mamba/auth"
     state: directory
@@ -47,6 +47,13 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
     mode: 0600
+- name: Ensure .pypirc is set.
+  ansible.builtin.template:
+      src: "{{ dotfiles_dir }}/pypi/pypirc.j2"
+      dest: "{{ ansible_user_dir }}/.pypirc"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_group }}"
+      mode: 0600
 - name: Ensure US with German umlauts keyboard layout is present.
   become: true
   ansible.builtin.copy:
