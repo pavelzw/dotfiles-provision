@@ -4,5 +4,9 @@ oh_my_zsh_plugins:
   - zsh-syntax-highlighting
   - dirhistory
   - fzf-zsh-plugin
+  - docker
+  - docker-compose
+  - ansible
+  - brew
 
 oh_my_zsh_theme: powerlevel10k/powerlevel10k

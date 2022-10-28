@@ -28,6 +28,7 @@ homebrew_taps:
 
 homebrew_cask_apps:
   - anki
+  - asana
   - homebrew/homebrew-cask-drivers/canon-eos-webcam-utility
   - dash
   - devtoys
@@ -48,8 +49,10 @@ homebrew_cask_apps:
   # - microsoft-office
   - nextcloud
   # - nordvpn
+  - obs
   # this breaks some permissions needed for homebrew, but only in the macos-11 runner
   # - homebrew/cask-versions/parallels17
+  - parsec
   - plex
   - portfolioperformance
   - raycast
