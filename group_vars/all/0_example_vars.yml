@@ -9,3 +9,8 @@ mamba:
       user: user
       password: password
       type: BasicHTTPAuthentication
+
+pypi:
+  authentication:
+    api_token: token
+    api_test_token: token
