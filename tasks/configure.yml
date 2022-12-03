@@ -54,6 +54,23 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_group }}"
     mode: 0600
+- name: Ensure .ghc dir exists.
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.ghc"
+    state: directory
+    recurse: true
+- name: Ensure ghci.conf is set.
+  ansible.builtin.copy:
+    src: "{{ dotfiles_dir }}/ghc/ghci.conf"
+    # the current brew version of ghc does not support $XDG_CONFIG_HOME
+    # but since ghc 9.4.1 it is supported (https://downloads.haskell.org/~ghc/9.4.1/docs/users_guide/9.4.1-notes.html?highlight=xdg)
+    # https://gitlab.haskell.org/ghc/ghc/-/commit/763d28551de32377a1dca8bdde02979e3686f400
+    # https://downloads.haskell.org/ghc/latest/docs/users_guide/ghci.html#the-ghci-files
+    # -> wait for ghc >= 9.4.1 to be available via brew
+    # see https://github.com/Homebrew/homebrew-core/pull/110865
+    # dest: "{{ config_home }}/.ghci"
+    dest: "{{ ansible_user_dir }}/.ghc/ghci.conf"
+    mode: 0644
 - name: Ensure US with German umlauts keyboard layout is present.
   become: true
   ansible.builtin.copy:

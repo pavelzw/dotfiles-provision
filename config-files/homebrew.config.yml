@@ -5,12 +5,18 @@ homebrew_installed_packages:
   - ansible-lint
   - asciiquarium
   - bat
+  - cmake
   - curl
   - exa
   - fzf
+  - ghc
   - git
   - gpg
+  - haskell-language-server
+  - haskell-stack
+  - hlint
   - htop
+  - make
   - neofetch
   - node
   - openjdk
