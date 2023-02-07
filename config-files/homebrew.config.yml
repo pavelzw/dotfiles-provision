@@ -12,6 +12,7 @@ homebrew_installed_packages:
   - ghc
   - git
   - gpg
+  - gtk+3  # needed for Ryujinx
   - haskell-language-server
   - haskell-stack
   - hlint
@@ -24,6 +25,7 @@ homebrew_installed_packages:
   - pre-commit
   - pygments
   - rsync
+  - sdl2  # needed for Ryujinx
   - tldr
   - tmux
   - yt-dlp
@@ -63,6 +65,7 @@ homebrew_cask_apps:
   - portfolioperformance
   - raycast
   - rectangle
+  - p-linnane/cask-unsigned/ryujinx
   - shottr
   - slack
   - slidepilot
