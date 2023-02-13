@@ -18,6 +18,7 @@ homebrew_installed_packages:
   - hlint
   - htop
   - make
+  - micromamba
   - neofetch
   - node
   - openjdk
@@ -46,18 +47,17 @@ homebrew_cask_apps:
   - google-chrome
   - homebrew/cask-fonts/font-meslo-lg-nerd-font
   - handbrake
-  - hiddenbar
   - insomnia
   - homebrew/cask-versions/iterm2-beta  # todo change to iterm2 as soon as v3.5 releases
   - linearmouse
   # - homebrew/homebrew-cask-drivers/logi-options-plus # you need to execute the installer manually...
   - mactex-no-gui
   - mambaforge
-  - micromamba
   # - microsoft-office
   - nextcloud
   # - nordvpn
-  - obs
+  # macOS's Gatekeeper has been disabled for the OBS cask
+  # - obs
   # this breaks some permissions needed for homebrew, but only in the macos-11 runner
   # - homebrew/cask-versions/parallels17
   - parsec
