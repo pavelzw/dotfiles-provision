@@ -16,7 +16,6 @@ jobs:
       matrix:
         os:
           - macos-latest
-          - macos-12
     env:
       ANSIBLE_FORCE_COLOR: '1'
 
